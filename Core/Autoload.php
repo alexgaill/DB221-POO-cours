@@ -6,7 +6,6 @@ class Autoload {
     // Il faut faire attention aux noms utilisés
     public static function autoloader($class)
     {
-        var_dump($class);
         $class = str_replace("\\", "/", $class);
         require ROOT."/$class.php";
     }
