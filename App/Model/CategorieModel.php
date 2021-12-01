@@ -3,12 +3,16 @@ namespace App\Model;
 
 use Core\Model\DefaultModel;
 
+/**
+ * @method array findAll() Retourne toutes les categories
+ * @method Article find(int $id) Retourne une categorie en fonction de son id
+ */
 class CategorieModel extends DefaultModel{
 
     protected $table = "categorie";
 
     /**
-     * Undocumented function
+     * Enregistre un article en BDD
      *
      * @param array $categorie
      * @return bool

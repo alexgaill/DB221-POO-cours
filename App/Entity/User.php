@@ -1,7 +1,9 @@
 <?php
 namespace App\Entity;
 
-class User {
+use Core\Entity\DefaultEntity;
+
+class User extends DefaultEntity {
 
     private $id;
 

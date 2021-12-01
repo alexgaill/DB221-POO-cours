@@ -5,12 +5,28 @@ use Core\Database\Database;
 
 class DefaultModel extends Database {
 
+    /**
+     * Nom de la table à charger dans la BDD
+     *
+     * @var string
+     */
     protected $table;
-    private $class;
 
+    /**
+     * Nom de l'entité chargée
+     *
+     * @var string
+     */
+    private $entity;
+
+    /**
+     * Charge l'entité appelée.
+     * Appelle le constructeur de database
+     */
     public function __construct()
     {
-        $this->class = ucfirst($this->table);
+        parent::__construct();
+        $this->entity = "App\Entity\\".ucfirst($this->table);
     }
      /**
      * Récupère toutes les lignes d'une table
@@ -23,7 +39,7 @@ class DefaultModel extends Database {
         // $query->setFetchMode(\PDO::FETCH_BOTH); // Valeur par défaut
         // $query->setFetchMode(\PDO::FETCH_ASSOC); // Retourne les valeurs en tableau associatif
         // $query->setFetchMode(\PDO::FETCH_OBJ); // retourne les valeurs en objet
-        $query->setFetchMode(\PDO::FETCH_CLASS, "App\Entity\\".$this->class); // retourne les valeurs liés à la class
+        $query->setFetchMode(\PDO::FETCH_CLASS, $this->entity); // retourne les valeurs liés à la class
         return $query->fetchAll();
     }
 
@@ -36,7 +52,7 @@ class DefaultModel extends Database {
     public function find(int $id)
     {
         $query = $this->pdo->query("SELECT * FROM $this->table WHERE id=$id");
-        $query->setFetchMode(\PDO::FETCH_CLASS, "App\Entity\\".$this->class); // retourne les valeurs liés à la class
+        $query->setFetchMode(\PDO::FETCH_CLASS, $this->entity); // retourne les valeurs liés à la class
         return $query->fetch();
     }
 

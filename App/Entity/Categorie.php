@@ -1,26 +1,19 @@
 <?php
 namespace App\Entity;
 
-class Categorie {
+use Core\Entity\DefaultEntity;
+
+class Categorie extends DefaultEntity{
 
     private $id;
 
     private $name;
 
-    public function __construct()
-    {
-        $this->name = $this->name . "...........";
-    }
+    // public function __construct()
+    // {
+    //     $this->name = $this->name . "...........";
+    // }
 
-    public function hydrate($categorie)
-    {
-        foreach ($categorie as $key => $value) {
-            $method = "set".ucfirst($key);
-            if (method_exists($this, $method)) {
-                $this->$method($value);
-            }
-        }
-    }
     /**
      * Get the value of id
      */

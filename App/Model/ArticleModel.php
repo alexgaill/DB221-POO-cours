@@ -6,7 +6,6 @@ use Core\Model\DefaultModel;
 /**
  * @method array findAll() Retourne tous les articles
  * @method Article find(int $id) Retourne un article en fonction de son id
- * @method bool save(string $statement, array $data) Ajoute un article en BDD
  */
 class ArticleModel extends DefaultModel{
 

@@ -2,28 +2,41 @@
 namespace App\Controller;
 
 use App\Model\CategorieModel;
+use Core\Controller\DefaultController;
 
-class Controller {
+class Controller extends DefaultController {
 
-    public function getCategories()
+    /**
+     * Page des catégories
+     *
+     * @return void
+     */
+    public function index()
     {
-        $categories = (new CategorieModel)->findAll();
-        include ROOT."/templates/Categorie/indexTemplate.php";
+        $this->render("Categorie/Index", [
+            "articles" => (new CategorieModel)->findAll()
+        ]);
     }
 
     /**
-     * Affiche une catégorie en fonction de son id
+     * Page d'une catégorie
      *
      * @param integer $id
      * @return void
      */
-    public function getCategorie(int $id)
+    public function single(int $id)
     {
-        // $id = $_GET["id"];
-        $categorie = (new CategorieModel)->find($id);
-        include ROOT."/templates/Categorie/single.php";
+        $this->render("Categorie/single", [
+            "categorie" => (new CategorieModel)->find($id)
+        ]);
     }
 
+    /**
+     * Page d'ajout d'une catégorie
+     *
+     * @param array $categorie
+     * @return void
+     */
     public function addCategorie(array $categorie)
     {
         if (!empty($categorie)) {
@@ -31,6 +44,6 @@ class Controller {
                 header("Location: index.php");
             }
         }
-        include ROOT."/templates/Categorie/save.php";
+        $this->render("Categorie/save");
     }
 }

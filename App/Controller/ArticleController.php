@@ -3,23 +3,42 @@ namespace App\Controller;
 
 use App\Model\UserModel;
 use App\Model\ArticleModel;
-use Core\Database\Database;
 use App\Model\CategorieModel;
+use Core\Controller\DefaultController;
 
-class ArticleController {
+class ArticleController extends DefaultController{
 
+    /**
+     * Page Index
+     *
+     * @return void
+     */
     public function getArticles()
     {
-        $articles = (new ArticleModel)->findAll();
-        require ROOT."/templates/Article/index.php";
+        $this->render("Article/index", [
+            "articles" => (new ArticleModel)->findAll()
+        ]);
     }
 
+    /**
+     * Page d'un article
+     *
+     * @param integer $id
+     * @return void
+     */
     public function getArticle(int $id)
     {
-        $article = (new ArticleModel)->find($id);
-        require ROOT."/templates/Article/single.php";
+        $this->render("Article/single", [
+            "article" => (new ArticleModel)->find($id)
+        ]);
     }
 
+    /**
+     * Page d'ajout d'un article
+     *
+     * @param array $article
+     * @return void
+     */
     public function addArticle($article)
     {
         if (!empty($article)) {
@@ -28,8 +47,9 @@ class ArticleController {
             }
         }
 
-        $categories = (new CategorieModel)->findAll();
-        $users = (new UserModel)->findAll();
-        require ROOT."/templates/Article/save.php";
+        $this->render("Article/save", [
+            "categories" => (new CategorieModel)->findAll(),
+            "users" => (new UserModel)->findAll()
+        ]);
     }
 }

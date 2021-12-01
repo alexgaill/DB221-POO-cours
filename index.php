@@ -1,8 +1,8 @@
 <?php
 
-use App\Data\Article;
-use App\Data\Categorie;
 // use App\Faker\FakerData;
+
+use App\Controller\ArticleController;
 
 define("ROOT", __DIR__);
 require ROOT. "/vendor/autoload.php";
@@ -23,7 +23,7 @@ require ROOT. "/vendor/autoload.php";
 //     $categorieClass->getCategories();
 // }
 
-$articleClass = new Article;
+$articleController = new ArticleController;
 // if(isset($_GET["id"]) && !empty($_GET["id"]) && is_numeric($_GET["id"])) {
 //     $articleClass->getArticle($_GET["id"]);
 // } else {
@@ -31,7 +31,7 @@ $articleClass = new Article;
 // }
 
 // $categorieClass->addCategorie($_POST);
-$articleClass->addArticle($_POST);
+$articleController->getArticles();
 
 /**
  * Refaire les mêmes méthodes pour la table article
