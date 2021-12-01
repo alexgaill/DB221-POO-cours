@@ -13,7 +13,7 @@ class ArticleController extends DefaultController{
      *
      * @return void
      */
-    public function getArticles()
+    public function index()
     {
         $this->render("Article/index", [
             "articles" => (new ArticleModel)->findAll()
@@ -26,7 +26,7 @@ class ArticleController extends DefaultController{
      * @param integer $id
      * @return void
      */
-    public function getArticle(int $id)
+    public function single(int $id)
     {
         $this->render("Article/single", [
             "article" => (new ArticleModel)->find($id)

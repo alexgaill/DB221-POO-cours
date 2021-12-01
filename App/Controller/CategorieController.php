@@ -4,7 +4,7 @@ namespace App\Controller;
 use App\Model\CategorieModel;
 use Core\Controller\DefaultController;
 
-class Controller extends DefaultController {
+class CategorieController extends DefaultController {
 
     /**
      * Page des catégories
@@ -14,7 +14,7 @@ class Controller extends DefaultController {
     public function index()
     {
         $this->render("Categorie/Index", [
-            "articles" => (new CategorieModel)->findAll()
+            "categories" => (new CategorieModel)->findAll()
         ]);
     }
 
@@ -24,11 +24,15 @@ class Controller extends DefaultController {
      * @param integer $id
      * @return void
      */
-    public function single(int $id)
+    public function single()
     {
-        $this->render("Categorie/single", [
-            "categorie" => (new CategorieModel)->find($id)
-        ]);
+        if (isset($_GET["id"]) && is_numeric($_GET["id"])) {
+            $this->render("Categorie/single", [
+                "categorie" => (new CategorieModel)->find($_GET["id"])
+            ]);
+        } else {
+            $this->redirectToRoute("/Categorie/index");
+        }
     }
 
     /**

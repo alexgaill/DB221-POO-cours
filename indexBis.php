@@ -1,12 +1,8 @@
 <?php
 
-// use App\Faker\FakerData;
-
 use App\Controller\ArticleController;
 
-define("ROOT", __DIR__);
-require ROOT. "/vendor/autoload.php";
-
+// use App\Faker\FakerData;
 // $faker = new FakerData;
 
 // var_dump($faker->fakeUser());

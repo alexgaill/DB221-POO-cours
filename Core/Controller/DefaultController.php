@@ -18,4 +18,9 @@ class DefaultController {
         $content = ob_get_clean();
         require ROOT."/templates/base.php";
     }
+
+    public function redirectToRoute($path)
+    {
+        header("Location: $path");
+    }
 }
