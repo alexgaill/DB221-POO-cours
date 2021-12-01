@@ -12,7 +12,7 @@ class Database {
      *
      * @var PDO
      */
-    private $pdo;
+    protected $pdo;
 
     /**
      * Génère la connexion à la BDD
@@ -20,6 +20,13 @@ class Database {
     public function __construct()
     {
         include ROOT."/Config/configDb.php";
+        // Exemple: 
+        // $configDb = [
+        //     "host" => "localhost:8889",
+        //     "dbname" => "blog",
+        //     "user" => "root",
+        //     "pwd" => "root",
+        // ];
         $this->pdo = new \PDO(
             "mysql:host=".$configDb['host'].";dbname=".$configDb['dbname'], 
             $configDb['user'], 
@@ -28,6 +35,7 @@ class Database {
                 \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION
             ]
         );
+
     }
 
     /**

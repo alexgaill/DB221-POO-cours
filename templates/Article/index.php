@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,9 +8,9 @@
 </head>
 <body>
     <ul>
-        <?php foreach($categories as $categorie): ?>
-            <li><?= $categorie->getName() ?></li>
-        <?php endforeach; ?>
+    <?php foreach($articles as $article): ?>
+        <li><?= $article->getTitle() ?></li>
+    <?php endforeach; ?>
     </ul>
 </body>
 </html>

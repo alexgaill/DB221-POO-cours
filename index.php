@@ -1,5 +1,6 @@
 <?php
 
+use App\Data\Article;
 use App\Data\Categorie;
 // use App\Faker\FakerData;
 
@@ -14,15 +15,23 @@ require ROOT. "/vendor/autoload.php";
 // echo "<br>";
 // var_dump($faker->fakeArticle());
 
-$categorieClass = new Categorie;
-// !empty pas obligatoire car on a is_numeric
+// $categorieClass = new Categorie;
+// // !empty pas obligatoire car on a is_numeric
 // if(isset($_GET["id"]) && !empty($_GET["id"]) && is_numeric($_GET["id"])) {
 //     $categorieClass->getCategorie($_GET["id"]);
 // } else {
 //     $categorieClass->getCategories();
 // }
 
-$categorieClass->addCategorie($_POST);
+$articleClass = new Article;
+// if(isset($_GET["id"]) && !empty($_GET["id"]) && is_numeric($_GET["id"])) {
+//     $articleClass->getArticle($_GET["id"]);
+// } else {
+//     $articleClass->getArticles();
+// }
+
+// $categorieClass->addCategorie($_POST);
+$articleClass->addArticle($_POST);
 
 /**
  * Refaire les mêmes méthodes pour la table article

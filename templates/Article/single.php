@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,10 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    <ul>
-        <?php foreach($categories as $categorie): ?>
-            <li><?= $categorie->getName() ?></li>
-        <?php endforeach; ?>
-    </ul>
+    <h1><?= $article->getTitle() ?></h1>
 </body>
 </html>
